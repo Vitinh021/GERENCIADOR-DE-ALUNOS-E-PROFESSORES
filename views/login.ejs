@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/css/alerta.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="icon" type="image/png" href="/img/livro.png" sizes="16x16">
+</head>
+
+<body> 
+    <div id="alerta" class="alerta <%- msg%>">
+        Erro no login!
+    </div>
+    
+    <div class="container">
+      <h1 style="text-align: center">Login</h1>
+        <hr>
+        <form method="POST" action="/login">
+            <div class="mb-3" id="email">
+                <label for="validationCustom02" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="validationCustom02" name="email" placeholder="Seu E-mail" required>
+            </div>
+
+            <div class="mb-3" id="senha">
+                <label for="validationCustom02" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="validationCustom02" name="senha" placeholder="Sua senha" required>
+            </div>
+
+            <button type="submit" class="btn btn-success">Entrar</button>
+        </form>
+    </div>
+    <script src="/js/bootstrap.bundle.js"></script>
+    
+    <script type="text/javascript">
+        setTimeout(() => {
+            var alerta = document.getElementById("alerta");
+            alerta.className = "alerta";
+        }, 3000);
+    </script>
+</body>
+
+</html>

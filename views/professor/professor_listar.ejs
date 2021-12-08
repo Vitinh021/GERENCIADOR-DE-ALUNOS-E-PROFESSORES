@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>
+        <%- title%>
+    </title>
+    <link rel="stylesheet" href="/css/alerta.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="icon" type="image/png" href="/img/livro.png" sizes="16x16">
+</head>
+
+<body>
+    <div id="alerta" class="alerta <%- msg%>">
+        Operação bem sucedida!
+    </div>
+
+    <div class="container">
+        <%- include("../partials/menu.ejs")%>
+            <h1 style="text-align: center;">Listagem de professores</h1>
+            <hr>
+            <a class="btn btn-success" href="/professor/cadastrar/">Cadastrar</a>
+            <br>
+            <br>
+            <% if (professores.length > 0) { %>
+                <% professores.forEach(professor => { %>
+
+                    <div class="card">
+                        <div class="card-body">
+                            <h5 class="card-title"> <%= professor.nome%> </h5>
+                            <p class="card-text">
+                                <b>Matricula: </b>
+                                <%= professor.matricula%>
+                            </p>
+
+                            <p class="card-text">
+                                <b>Idade: </b>
+                                <%= professor.idade%>
+                            </p>
+
+                            <p class="card-text">
+                                <b>Disciplina: </b>
+                                <%= professor.disciplina%>
+                            </p>
+
+                            
+                            <p class="card-text">
+                                <b>Email: </b>
+                                <%= professor.email%>
+                            </p>
+                            
+                            <a class="btn btn-warning" href="/professor/cadastrar/<%= professor.id%>">Editar</a>
+                            <a class="btn btn-danger" href="/professor/remover/<%= professor.id%>">Remover</a>
+                        </div>
+                    </div>
+
+                    <% }) %>
+            <% } else { %>
+                Não há dados de professores.
+                <% } %>
+    </div>
+    <script src="/js/bootstrap.bundle.js"></script>
+
+    <script type="text/javascript">
+        setTimeout(() => {
+            var alerta = document.getElementById("alerta");
+            alerta.className = "alerta";
+        }, 3000);
+    </script>
+
+</body>
+
+</html>

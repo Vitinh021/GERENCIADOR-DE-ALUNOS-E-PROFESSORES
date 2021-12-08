@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title> <%- title%> </title>
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="icon" type="image/png" href="/img/livro.png" sizes="16x16">
+</head>
+
+<body>
+    <div class="container">
+        <%- include("../partials/menu.ejs")%> 
+        <h1 style="text-align: center;">Relatório de alunos</h1>
+        <hr>
+
+        <% if (alunos.length > 0) { %>
+            <button class="btn btn-primary" type="button" onclick="window.print(); return false;" >Imprimir</button>
+
+            <table class="table table-striped">
+                <tr>
+                    <th><b>Nome</b></th>
+                    <th><b>Matricula</b></th>
+                    <th><b>Idade</b></th>
+                    <th><b>Curso</b></th>
+                    <th><b>E-mail</b></th>
+                </tr>
+
+                <% alunos.forEach(aluno=> { %>
+                    <tr>
+                        <td><%= aluno.nome%></td>
+                        <td><%= aluno.matricula%></td>
+                        <td><%= aluno.idade%></td>
+                        <td><%= aluno.curso%></td>
+                        <td><%= aluno.email%></td>
+                    </tr>
+                    <% }) %>
+            </table>
+            <% } else { %>
+                Não há dados de alunos.
+                <% } %>
+    </div>
+    <script src="/js/bootstrap.bundle.js"></script>
+</body>
+
+</html>

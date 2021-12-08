@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> <%- title%>  </title>
+    <link rel="stylesheet" href="/css/alerta.css">
+    <link rel="stylesheet" href="/css/bootstrap.css">
+    <link rel="icon" type="image/png" href="/img/livro.png" sizes="16x16">
+</head>
+
+<body> 
+    <div id="alerta" class="alerta <%- msg%>">
+        <% if (msg == "active") { %>
+            Operação bem sucedida!    
+        <% } else if (msg == "active_erro"){ %>
+            Erro, email já existe!
+        <% } %>
+    </div>
+    
+    <div class="container">
+      <%- include("../partials/menu.ejs") %>
+      <h1 style="text-align: center"> <%- title%> de aluno</h1>
+        <hr>
+        <form method="POST" action="/aluno/cadastrar">
+            <div class="mb-3" id="nome">
+                <label for="validationCustom02" class="form-label">Nome</label>
+                <input type="text" class="form-control" id="validationCustom02" name="nome" value="<%= aluno.nome%>" placeholder="Seu nome" required>
+            </div>
+
+            <div class="mb-3" id="matricula">
+                <label for="validationCustom02" class="form-label">Matricula</label>
+                <input type="text" class="form-control" id="validationCustom02" name="matricula" value="<%= aluno.matricula%>" placeholder="Sua matricula" required>
+            </div>
+
+            <div class="mb-3" id="idade">
+                <label for="validationCustom02" class="form-label">Idade</label>
+                <input type="text" class="form-control" id="validationCustom02" name="idade" value="<%= aluno.idade%>" placeholder="Sua idade" required>
+            </div>
+
+            <div class="mb-3" id="curso">
+                <label for="validationCustom02" class="form-label">Curso</label>
+                <input type="text" class="form-control" id="validationCustom02" name="curso" value="<%= aluno.curso%>" placeholder="Seu curso" required>
+            </div>
+
+            <div class="mb-3" id="email">
+                <label for="validationCustom02" class="form-label">E-mail</label>
+                <input type="text" class="form-control" id="validationCustom02" name="email" value="<%= aluno.email%>" placeholder="Seu E-mail" required>
+            </div>
+
+            <div class="mb-3" id="senha">
+                <label for="validationCustom02" class="form-label">Senha</label>
+                <input type="password" class="form-control" id="validationCustom02" name="senha" placeholder="Sua senha">
+            </div>
+
+            <input type="hidden" name="id" value="<%= aluno.id%>">
+            <button type="submit" class="btn btn-success"><%- botao%></button>
+            
+        </form>
+    </div>
+    <script src="/js/bootstrap.bundle.js"></script>
+    
+    <script type="text/javascript">
+        setTimeout(() => {
+            var alerta = document.getElementById("alerta");
+            alerta.className = "alerta";
+        }, 3000);
+    </script>
+</body>
+
+</html>

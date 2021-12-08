@@ -1,0 +1,29 @@
+.alerta{
+    position: absolute;
+    z-index: 2;
+    top: 5px;
+    right: -300px;
+    width: 300px;
+    height: 40px;
+    background-color: green;
+    color: white;
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    border-radius: 5px;   
+}
+#alerta{
+    transition: 2s;
+}
+.active{
+    right: 0;
+}
+
+.active_erro{
+    background-color: red;
+    right: 0;
+}
+
+body{
+    overflow-x: hidden !important; 
+}
