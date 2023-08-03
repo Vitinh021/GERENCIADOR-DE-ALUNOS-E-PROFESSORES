@@ -8,6 +8,6 @@ const professorScheme = schema({
     disciplina: String,
     email: String,
     senha: String
-});
+}); 
 
 module.exports = mongoose.model("Professor", professorScheme);

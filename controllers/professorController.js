@@ -44,7 +44,6 @@ module.exports = class ProfessorController {
         const professor = request.body;
 
         if (professor.id) {//editar
-            //pode usar o findByIdAndUpdate
 
             if(professor.senha == ""){
                 await Professor.findOneAndUpdate({_id: professor.id}, {

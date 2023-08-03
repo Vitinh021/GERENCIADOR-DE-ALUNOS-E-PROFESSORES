@@ -1,3 +1,4 @@
+const mongoose = require('mongoose');
 const Aluno = require("../models/Aluno");
 const Professor = require("../models/Professor");
 const bcrypt =  require("bcryptjs");
@@ -7,7 +8,6 @@ module.exports = class LoginController {
         const usuario = request.body;
         const aluno = await Aluno.findOne({email: usuario.email});
         const professor = await Professor.findOne({email: usuario.email});
-
         if(aluno){
             if (bcrypt.compareSync(usuario.senha, aluno.senha)) {
                 request.session.autenticacao = usuario.email;
